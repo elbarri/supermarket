@@ -47,3 +47,21 @@ Total price expected: __£16.61__
 
 Basket: GR1,CF1,SR1,CF1,CF1
 Total price expected: __£30.57__
+
+### Running Instructions
+Be sure to have Elixir and Erlang installed. Then run:
+
+```
+$ iex -S mix
+iex(1)> pr = %PricingRules{
+            discount_type: :buy_n_get_x_free,
+            threshold: 2,
+            operand: 1,
+            product_codes: ["GR1"]
+            }
+iex(2)> pid = Checkout.new(pr)
+iex(3)> Checkout.scan(pid, "GR1")
+iex(4)> Checkout.scan(pid, "GR1")
+iex(5)> Checkout.total(pid)
+```
+
